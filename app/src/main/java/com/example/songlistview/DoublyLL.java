@@ -4,7 +4,7 @@ public class DoublyLL
 {
     Node head, tail, next, prev;
 
-    public int getTailData()
+    public String getTailData()
     {
         return tail.getData();
     }
@@ -32,7 +32,7 @@ public class DoublyLL
     */
 
     //INSERTIONS METHODS
-    public void push(int newData)
+    public void push(String newData)
     {
         //pushing is the insertion method that inserts a new head node
 
@@ -49,7 +49,7 @@ public class DoublyLL
         head = newDLLNode; //finally assign the whole new node as the head node
     }//end of push method (IT WORKSSSSS!!!)
 
-    public void pushAtEnd(int newData)
+    public void pushAtEnd(String newData)
     {
         Node newDLLNode = new Node(newData); //first create the new temp node
 
@@ -153,24 +153,38 @@ Peak
         }//end of while loop
     }//end of showList method
 
+    public String[] toArray()
+    {
+        Node current = head; //start off with the head of the list
+        String[] DLLArray = new String[findSize()];
+
+        for (int i = 0; i < findSize(); i++) //run below if the node is not the tail; it's not null
+        {
+            DLLArray[i] = current.data + "";
+            current = current.next; //moves on to the next node
+        }//end of while loop
+
+        return DLLArray;
+    }
+
     //NODE CLASS
     private class Node
     {
         //instance variables
-        private int data;
+        private String data;
         private Node head;
         private Node tail;
         private Node next;
         private Node prev;
 
         //constructors
-        Node (int newData)
+        Node (String newData)
         {
             this.data = newData;
         }
 
         //getters
-        public int getData()
+        public String getData()
         {
             return data;
         }
@@ -190,7 +204,7 @@ Peak
         public Node getTail(){ return tail; }
 
         //setters
-        public void setData(int data) {
+        public void setData(String data) {
             this.data = data;
         }
 
